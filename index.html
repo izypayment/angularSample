@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Angular Checkout with Izypayment</title>
+    <style media="screen">
+        body {background-color: #f1f2f3; font-family: 'Open Sans', Calibri, sans-serif;}
+        .page{background-color: white;width:350px;margin: 0 auto;padding:40px 20px; margin-top:50px;
+            border-radius:5px;text-align: center;}
+        .message {width: 100%;padding:20px 0;background-color: #06ca87;color: white;border-radius: 6px;margin-bottom: 10px;}
+        h2 {margin: 0;font-weight: 600;margin-bottom: 40px;}
+        ul {list-style: none;padding: 0;}
+        li {line-height: 26px;font-size: 17px;}
+        form > input {width: 100%;height: 40px;line-height: 35px;background-color: #fafbfc;
+            text-align: center;border:1px solid #e3e3e3;border-radius: 4px;margin: 20px 0;font-size:18px;}
+        form > input:focus {outline: none;border:1px solid #ccc}
+        form > button {padding: 15px 40px;text-align: center;border:1px solid #08c;background-color: #08c;
+            border-radius: 4px;color: white;font-size: 16px;cursor: pointer;}
+        form > button:focus {outline: none;}
+        .copyright {text-align: center;color: #999;font-size:14px;margin-top: 20px;}
+    </style>
+</head>
+
+
+<body ng-app="myStore">
+
+    <div class="page" ng-controller="PaymentController">
+
+        <div class="message" ng-show="showMessage">
+            {{ data.content }}
+        </div>
+
+
+        <h2>Page de Paiement</h2>
+
+        <ul>
+            <li><strong>Produit : </strong> Nom du produit</li>
+            <li><strong>Montant à payer : </strong> 100 FCFA</li>
+        </ul>
+
+
+        <form ng-submit="pay()">
+            <input type="text" ng-model="payment.secret">
+
+            <br>
+            <button type="submit" >
+                <span ng-show="!isLoading">PAYER</span>
+                <span ng-show="isLoading">Chargement en cours...</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="copyright">
+        Angular Sample Integration of izypayment
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
