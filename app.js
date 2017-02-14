@@ -23,10 +23,12 @@ app.controller('PaymentController', function($scope, $http) {
                 key: 'my-application-key' //<-- application key here
             }
         })
-        .then(function(response) { //payment successfull
+        .then(function(response) { //connection was successfull
             $scope.isLoading   = false
             $scope.showMessage = true
-            $scope.data = response.data
+            $scope.data = response.data 
+            //check for statusCode. 1 = successful.
+            
             console.log(response)
         },
         function(error) { //payment error
